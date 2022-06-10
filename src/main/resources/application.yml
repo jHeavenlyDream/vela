@@ -2,10 +2,10 @@ spring:
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/tokamak-db
+    url: jdbc:postgresql://localhost:5432/demodb
     username: postgres
     password: r00t
