@@ -49,6 +49,7 @@ public class SecurityConfiguration {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/facility/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin(Customizer.withDefaults())

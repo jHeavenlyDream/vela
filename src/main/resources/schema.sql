@@ -1,6 +1,7 @@
-drop table if exists  users cascade;
-drop table if exists  authority cascade;
-drop table if exists  user_authority cascade;
+drop table if exists users cascade;
+drop table if exists authority cascade;
+drop table if exists user_authority cascade;
+drop table if exists facilities;
 
 
 create table users
@@ -12,7 +13,7 @@ create table users
 
 create table authority
 (
-    id       serial      not null primary key,
+    id        serial      not null primary key,
     authority varchar(20) not null
 );
 
@@ -24,3 +25,11 @@ create table user_authority
     foreign key (user_id) references users (id),
     foreign key (authority_id) references authority (id)
 );
+
+create table facilities
+(
+    id      serial       not null primary key,
+    title   varchar(256) not null,
+    content bytea
+);
+
