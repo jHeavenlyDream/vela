@@ -30,6 +30,6 @@ create table facilities
 (
     id      serial       not null primary key,
     title   varchar(256) not null,
-    content bytea
+    content oid
 );
 
