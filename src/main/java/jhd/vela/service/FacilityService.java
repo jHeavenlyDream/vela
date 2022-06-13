@@ -5,6 +5,7 @@ import jhd.vela.repository.FacilityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,5 +23,17 @@ public class FacilityService {
 
     public Optional<Facility> findFirst(){
         return facilityRepository.findFirstBy();
+    }
+
+    public List<Facility> findAll(){
+        return facilityRepository.findAll();
+    }
+
+    public void save(Facility facility) {
+        facilityRepository.save(facility);
+    }
+
+    public void deleteById(Integer id) {
+        facilityRepository.deleteById(id);
     }
 }

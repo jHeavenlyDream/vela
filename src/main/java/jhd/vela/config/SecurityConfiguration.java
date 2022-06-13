@@ -50,6 +50,7 @@ public class SecurityConfiguration {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/facility/**").permitAll()
+                .antMatchers("/admin/*").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin(Customizer.withDefaults())
