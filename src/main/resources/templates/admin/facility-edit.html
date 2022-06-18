@@ -7,18 +7,22 @@
     <title>Title</title>
 </head>
 <body>
-<div th:replace="fragments/menu-fragment :: main-menu"></div>
 
-<div class="content px-4">
-    <form action="#" th:action="@{/admin/facilities/save}" th:object="${facility}" method="POST">
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{id}" />
-        <label>Title</label>
-        <input type="text" th:field="*{title}" placeholder="Title" class="form-control mb-4 col-4">
-        <label>Content</label>
-        <textarea th:field="*{content}" placeholder="Content" class="form-control mb-4 col-4" autocomplete="off"></textarea>
-        <button type="submit" class="btn btn-success col-2">Cохранить</button>
-    </form>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragments/menu-fragment :: sidebar-menu"></div>
+        <div class="col py-3">
+            <form action="#" th:action="@{/admin/facilities/save}" th:object="${facility}" method="POST">
+                <!-- Add hidden form field to handle update -->
+                <input type="hidden" th:field="*{id}" />
+                <label>Title</label>
+                <input type="text" th:field="*{title}" placeholder="Title" class="form-control mb-4 col-4">
+                <label>Content</label>
+                <textarea th:field="*{content}" placeholder="Content" class="form-control mb-4 col-4" autocomplete="off"></textarea>
+                <button type="submit" class="btn btn-success col-2">Cохранить</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div th:replace="fragments/head-fragment :: scripts"></div>

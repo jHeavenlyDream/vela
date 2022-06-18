@@ -5,24 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-<div th:replace="fragments/menu-fragment :: main-menu"></div>
 
-<div class="content">
-    <a th:href="@{/admin/facilities/add}" class="btn btn-success ">Add Facility</a>
-    <table class="table">
-        <tr>
-            <th scope="col">Название</th>
-            <th scope="col">Управление</th>
-        </tr>
-        <tr th:each="facility: ${facilities}" >
-            <td scope="row" th:text="${facility.title}">title</td>
-            <td scope="row">
-                <a th:href="@{/admin/facilities/edit/{id}(id=${facility.id})}" class="btn btn-primary">Редактировать</a>
-                <a th:href="@{/admin/facilities/delete/{id}(id=${facility.id})}" class="btn btn-danger">Удалить</a>
-            </td>
-        </tr>
-    </table>
-
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragments/menu-fragment :: sidebar-menu"></div>
+        <div class="col py-3">
+            <a th:href="@{/admin/facilities/add}" class="btn btn-success ">Add Facility</a>
+            <table class="table">
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Управление</th>
+                </tr>
+                <tr th:each="facility: ${facilities}" >
+                    <td scope="row" th:text="${facility.title}">title</td>
+                    <td scope="row">
+                        <a th:href="@{/admin/facilities/edit/{id}(id=${facility.id})}" class="btn btn-primary">Редактировать</a>
+                        <a th:href="@{/admin/facilities/delete/{id}(id=${facility.id})}" class="btn btn-danger">Удалить</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div th:replace="fragments/head-fragment :: scripts"></div>
