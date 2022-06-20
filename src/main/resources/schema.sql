@@ -2,6 +2,7 @@ drop table if exists users cascade;
 drop table if exists authority cascade;
 drop table if exists user_authority cascade;
 drop table if exists facilities;
+drop table if exists shots;
 
 
 create table users
@@ -32,4 +33,15 @@ create table facilities
     title   varchar(256) not null,
     content oid
 );
+
+create table shots
+(
+    id          serial     not null primary key,
+    number      int unique not null,
+    description varchar(1000),
+    shot_date   date,
+    shot_time   time
+);
+
+
 

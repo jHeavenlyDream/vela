@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <div th:replace="fragments/head-fragment :: header"></div>
+  <title>Title</title>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div th:replace="fragments/menu-fragment :: sidebar-menu"></div>
+    <div class="col py-3">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Номер пуска</th>
+          <th scope="col">Дата пуска</th>
+          <th scope="col">Время пуска</th>
+          <th scope="col">Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="shot: ${shots}" class='clickable-row' data-href='url://'>
+          <td scope="row" th:text="${shot.number}">id</td>
+          <td scope="row" th:text="${shot.date}">date</td>
+          <td scope="row" th:text="${shot.time}">time</td>
+          <td scope="row" th:text="${shot.description}">description</td>
+          <td scope="row">
+            <a th:href="@{/shots/show/{shot_number}(shot_number=${shot.number})}" class="btn btn-info">SHOW</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div th:if="${totalPages > 1}">
+        <nav aria-label="">
+          <ul class="pagination pagination-sm">
+        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+          <li th:if="${currentPage != i}" class="page-item">
+            <a class="page-link" th:href="@{'/shots/page/' + ${i}}">[[${i}]]</a>
+          </li>
+        </span>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div th:replace="fragments/head-fragment :: scripts"></div>
+<script>
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+      window.location = $(this).data("href");
+    });
+  });
+</script>
+</body>
+</html>
